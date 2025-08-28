@@ -1,56 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- 
-      This is an HTML comment
-      You can write text in a comment and the content won't be visible in the page
-    -->
-
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="https://glitch.com/favicon.ico" />
-
-  <!--
-      This is the page head - it contains info the browser uses
-      Like the title, which appears on the browser tab but not inside the page
-      Further down you'll see the content that displays in the page
-    -->
-  <title>Hello World!</title>
-
-  <!-- The website stylesheet -->
-  <link rel="stylesheet" href="/style.css" />
-
-  <!-- The website JavaScript file -->
-  <script src="/script.js" defer></script>
+  <meta charset="UTF-8">
+  <title>Honey 🐝 & Bee 🍯</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #ff9a9e, #fecfef);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Segoe Script', cursive;
+      text-align: center;
+    }
+    h1 {
+      color: white;
+      font-size: 2em;
+      margin-bottom: 15px;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px pink; }
+      to { text-shadow: 0 0 20px red; }
+    }
+    h2 {
+      font-size: 1.3em;
+      color: #fff;
+      margin: 10px;
+    }
+    img {
+      width: 200px;
+      margin: 15px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255, 0, 100, 0.5);
+    }
+    button {
+      background: #ff4d6d;
+      border: none;
+      padding: 12px 20px;
+      margin-top: 15px;
+      font-size: 1.1em;
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+      transition: transform 0.3s;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+    #secret {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: white;
+      background: rgba(255, 182, 193, 0.3);
+      padding: 15px;
+      border-radius: 15px;
+    }
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .heart {
+      position: absolute;
+      font-size: 2em;
+      animation: floatUp 6s infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0.8; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+  </style>
 </head>
-
 <body>
-  <!--
-      The body includes the content you see in the page
-      Each element is defined using tags, like this <div></div>
-      The attributes like class="wrapper" let us style elements in the CSS
-    -->
-  <div class="wrapper">
-    <div class="content" role="main">
-      <h1 class="title">Oh hi website!</h1>
-      <img src="/cool-website.svg" class="illustration" alt="cool website" />
-      <div class="instructions">
-        <p>
-          Fork <a href="https://github.com/glitchdotcom/website-to-compute">this project</a> and open it in a GitHub Codespace.
-        </p>
-        <p> Follow the steps in the README to deploy your new website to Fastly in a few steps!
-        </p>
+  <h1>Honey 🐝 & Bee 🍯</h1>
+  <h2>I Love you, I can't leave you at any cost,<br>I want you forever 💕<br>I love you so much, Mr Bee 🐝</h2>
+  
+  <!-- Cartoon Couple Picture -->
+  <img src="https://i.pinimg.com/originals/f5/f0/38/f5f03859823a1784b5f86e944759aee2.gif" alt="Couple">
 
-      </div>
+  <!-- Hidden Note Button -->
+  <button onclick="document.getElementById('secret').style.display='block'">
+    💌 Click Me, My Bee
+  </button>
+  <div id="secret">Forever isn’t enough with you. You are my home, my always, my everything. 🐝🍯</div>
 
-      <footer class="footer">
-        <div>
-          <a class="remix" href="https://github.com/glitchdotcom/website-to-compute">🚧 Get your own site</a>
-        </div>
-      </footer>
-    </div>
-  </div>
+  <!-- Floating Hearts -->
+  <div class="hearts"></div>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      const emojis = ["❤️","💕","💖","🐝","🍯"];
+      heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.querySelector(".hearts").appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(createHeart, 400);
+  </script>
 </body>
-
 </html>
+
